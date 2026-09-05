@@ -91,8 +91,8 @@ export default function Home() {
       <header className="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
-          <div className="flex items-center gap-3.5">
-            <div className="w-14 h-14 rounded-2xl overflow-hidden border border-amber-500/30 shadow-md bg-zinc-900 flex items-center justify-center shrink-0">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 rounded-2xl overflow-hidden border border-amber-500/30 shadow-md bg-zinc-900 flex items-center justify-center shrink-0">
               <img 
                 src="/images/logo-guitar-kids.png" 
                 alt="Guitar Kids Brasil Logo" 
@@ -102,9 +102,9 @@ export default function Home() {
                 }}
               />
             </div>
-            <div className="font-extrabold text-xl md:text-2xl leading-tight">
+            <div className="font-extrabold text-2xl md:text-3xl leading-tight">
               <span className="block tracking-wider text-white">GUITAR BRASIL</span>
-              <span className="block text-sm text-amber-400 font-medium tracking-wide">GUITAR KIDS BRASIL</span>
+              <span className="block text-base text-amber-400 font-medium tracking-wide">GUITAR KIDS BRASIL</span>
             </div>
           </div>
 
@@ -281,7 +281,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= PLANOS E PREÇOS ================= */}
+      {/* ================= PLANOS E PREÇOS (Invertido: R$ 480º primeiro) ================= */}
       <section id="planos" className="py-24 bg-zinc-900/40 border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -291,19 +291,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col hover:border-zinc-700 transition-colors">
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-zinc-100">Aula Individual Online</h3>
-                <p className="text-zinc-400 text-sm mt-2 min-h-[40px]">Para qualquer instrumento no conforto de casa.</p>
-              </div>
-              <div className="mb-6 flex items-baseline">
-                <span className="text-4xl font-extrabold text-white">R$ 430</span>
-                <span className="text-zinc-400 font-medium">/mês</span>
-              </div>
-              <p className="text-emerald-400 font-medium text-sm mb-8">Sem taxa de matrícula.</p>
-              <a href={whatsappLink} target="_blank" rel="noreferrer" className="mt-auto block w-full py-3 px-4 bg-zinc-800 hover:bg-zinc-700 text-center rounded-xl font-semibold transition-colors">Garantir Vaga</a>
-            </div>
-
+            {/* 1º Card agora é o Presencial de R$ 480 com destaque */}
             <div className="bg-gradient-to-b from-zinc-900 to-zinc-950 border border-amber-500/50 rounded-3xl p-8 flex flex-col relative transform lg:-translate-y-4 shadow-xl shadow-amber-500/5">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-zinc-950 font-bold px-4 py-1 rounded-full text-sm">
                 Presencial
@@ -318,6 +306,20 @@ export default function Home() {
               </div>
               <div className="text-transparent mb-8">.</div> 
               <a href={whatsappLink} target="_blank" rel="noreferrer" className="mt-auto block w-full py-3 px-4 bg-amber-500 hover:bg-amber-400 text-zinc-950 text-center rounded-xl font-bold transition-colors">Garantir Vaga</a>
+            </div>
+
+            {/* 2º Card agora é o Online de R$ 430 */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col hover:border-zinc-700 transition-colors">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-zinc-100">Aula Individual Online</h3>
+                <p className="text-zinc-400 text-sm mt-2 min-h-[40px]">Para qualquer instrumento no conforto de casa.</p>
+              </div>
+              <div className="mb-6 flex items-baseline">
+                <span className="text-4xl font-extrabold text-white">R$ 430</span>
+                <span className="text-zinc-400 font-medium">/mês</span>
+              </div>
+              <p className="text-emerald-400 font-medium text-sm mb-8">Sem taxa de matrícula.</p>
+              <a href={whatsappLink} target="_blank" rel="noreferrer" className="mt-auto block w-full py-3 px-4 bg-zinc-800 hover:bg-zinc-700 text-center rounded-xl font-semibold transition-colors">Garantir Vaga</a>
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col hover:border-zinc-700 transition-colors">
