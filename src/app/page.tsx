@@ -1,22 +1,67 @@
 'use client';
 import React from 'react';
+
+// 100% dos ícones vindo de bibliotecas prontas (Lucide e React Icons)
 import { 
-  Music, Guitar, Mic2, Piano, Headphones, BookOpen, Clock, 
-  MapPin, CheckCircle2, ChevronRight, MessageCircle, Play
+  CheckCircle2, ChevronRight, MessageCircle, Clock, Headphones, BookOpen, MapPin, 
+  Piano, Guitar, Mic2, Sparkles, ListMusic
 } from 'lucide-react';
 
-function Instagram ({ className = "" }: { className?: string }) {
+import { 
+  GiGuitar, GiViolin, GiFlute, GiSaxophone 
+} from 'react-icons/gi';
+
+import { FaGuitar } from 'react-icons/fa';
+
+// ================= WRAPPERS DOS ÍCONES PARA AJUSTES VISUAIS =================
+function Instagram({ className = "" }: { className?: string }) {
   return (
-    <svg
-      role="img"
-      viewBox="0 0 24 24"
-      className={className}
-      fill="currentColor"
-      aria-label="Instagram"
-    >
+    <svg role="img" viewBox="0 0 24 24" className={className} fill="currentColor" aria-label="Instagram">
       <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm8.7 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
     </svg>
   );
+}
+
+function ViolaoIcon({ className = "" }: { className?: string }) {
+  // Ícone clássico acústico
+  return <Guitar className={className} />;
+}
+
+function GuitarraIcon({ className = "" }: { className?: string }) {
+  // Ícone clássico elétrico
+  return <GiGuitar className={className} />;
+}
+
+function ViolaIcon({ className = "" }: { className?: string }) {
+  // Corpo acústico ligeiramente diferente (FontAwesome) para diferenciar do violão
+  return <FaGuitar className={className} />;
+}
+
+function UkuleleIcon({ className = "" }: { className?: string }) {
+  // Um Ukulele é um violão menor. O 'scale-75' reduz o tamanho do ícone nativo perfeitamente.
+  return <Guitar className={`transform scale-75 ${className}`} />;
+}
+
+function BaixoIcon({ className = "" }: { className?: string }) {
+  // Usa a silhueta elétrica, mas invertida horizontalmente para diferenciar da guitarra
+  return <GiGuitar className={`transform scale-x-[-1] ${className}`} />;
+}
+
+function GaitaIcon({ className = "" }: { className?: string }) {
+  // Nota musical com linhas remetendo à grade de uma gaita
+  return <ListMusic className={className} />;
+}
+
+function ViolinoIcon({ className = "" }: { className?: string }) {
+  return <GiViolin className={className} />;
+}
+
+function FlautaIcon({ className = "" }: { className?: string }) {
+  return <GiFlute className={className} />;
+}
+
+function SaxIcon({ className = "" }: { className?: string }) {
+  return <GiSaxophone className={className} />;
 }
 
 export default function Home() {
@@ -24,29 +69,42 @@ export default function Home() {
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre a aula experimental gratuita da Guitar Brasil.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
+  const cursosData = [
+    { name: 'Violão', desc: 'Aprenda acordes, ritmos e repertório do zero ao avançado com método prático.', icon: ViolaoIcon },
+    { name: 'Guitarra', desc: 'Técnicas de solo, escalas, riffs e solos com ênfase na prática.', icon: GuitarraIcon },
+    { name: 'Viola', desc: 'Fundamentos e repertório tradicional com acompanhamento especializado.', icon: ViolaIcon },
+    { name: 'Ukulele', desc: 'Aulas dinâmicas e aceleradas para tocar suas músicas favoritas rapidamente.', icon: UkuleleIcon },
+    { name: 'Contrabaixo', desc: 'Desenvolva o groove, técnica, ritmo e harmonia no instrumento.', icon: BaixoIcon },
+    { name: 'Canto', desc: 'Técnica vocal, afinação, projeção e repertório personalizado.', icon: Mic2 },
+    { name: 'Piano', desc: 'Piano erudito e popular, com leitura de partituras, cifras, técnicas, escalas e repertório voltado para o clássico e popular.', icon: Piano },
+    { name: 'Violino', desc: 'Postura, arco, técnica e peças clássicas ou populares.', icon: ViolinoIcon },
+    { name: 'Flauta', desc: 'Respiração, emissão de som e prática musical acelerada.', icon: FlautaIcon },
+    { name: 'Gaita', desc: 'Técnicas de respiração, bends e solos dinâmicos.', icon: GaitaIcon },
+    { name: 'Sax', desc: 'Sonoridade, embocadura e repertório prático.', icon: SaxIcon },
+    { name: 'Iniciação musical', desc: 'Primeiros passos no universo da música para crianças e iniciantes.', icon: Sparkles },
+  ];
+
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-amber-500 selection:text-zinc-950">
       
-      {/* ================ HEADER (Sticky) ================ */}
+      {/* ================= HEADER (Sticky) ================= */}
       <header className="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
-          {/* Logo da Escola Real no Header */}
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl overflow-hidden border border-amber-500/30 shadow-md bg-zinc-900 flex items-center justify-center">
+          <div className="flex items-center gap-3.5">
+            <div className="w-14 h-14 rounded-2xl overflow-hidden border border-amber-500/30 shadow-md bg-zinc-900 flex items-center justify-center shrink-0">
               <img 
                 src="/images/logo-guitar-kids.png" 
                 alt="Guitar Kids Brasil Logo" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  // Fallback visual caso a imagem demore a carregar
-                  (e.target as HTMLElement).style.display = 'none';
+                  (e.target as HTMLElement).style.display='none';
                 }}
               />
             </div>
-            <div className="font-extrabold text-lg leading-tight">
+            <div className="font-extrabold text-xl md:text-2xl leading-tight">
               <span className="block tracking-wider text-white">GUITAR BRASIL</span>
-              <span className="block text-xs text-amber-400 font-medium tracking-wide">GUITAR KIDS BRASIL</span>
+              <span className="block text-sm text-amber-400 font-medium tracking-wide">GUITAR KIDS BRASIL</span>
             </div>
           </div>
 
@@ -80,15 +138,13 @@ export default function Home() {
             Matrículas Abertas para Todas as Idades
           </div>
 
-          {/* Título com tamanho equilibrado */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-6">
             Sua jornada musical <br className="hidden md:block"/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500">
               começa aqui.
             </span>
           </h1>
 
-          {/* Texto descritivo ajustado em branco puro */}
           <p className="mt-4 text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed font-normal">
             Escola Especializada no Ensino de música para adultos, crianças e adolescentes. Aprenda de forma prática, rápida e eficiente.
           </p>
@@ -117,50 +173,48 @@ export default function Home() {
           <p className="text-center text-sm font-semibold tracking-widest text-amber-400 uppercase mb-8">Nossos Alunos na Prática</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="rounded-2xl overflow-hidden border border-zinc-800 h-48 bg-zinc-900 relative group">
-              <img src="/images/aluno-violao.jpg" alt="Aluno tocando violão" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e)=>{(e.target as HTMLElement).style.display='none'}} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                <span className="text-xs font-bold text-white">Guitarra</span>
-              </div>
+              <img src="/images/aluno-violao.jpg" alt="Aluno tocando" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e)=>{(e.target as HTMLElement).style.display='none'}} />
             </div>
             <div className="rounded-2xl overflow-hidden border border-zinc-800 h-48 bg-zinc-900 relative group">
-              <img src="/images/crianca-aula.jpg" alt="Criança aprendendo música" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e)=>{(e.target as HTMLElement).style.display='none'}} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                <span className="text-xs font-bold text-white">Iniciação Musical</span>
-              </div>
+              <img src="/images/crianca-aula.jpg" alt="Criança em aula" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e)=>{(e.target as HTMLElement).style.display='none'}} />
             </div>
             <div className="rounded-2xl overflow-hidden border border-zinc-800 h-48 bg-zinc-900 relative group">
               <img src="/images/teclado-crianca.jpg" alt="Aluno no teclado" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e)=>{(e.target as HTMLElement).style.display='none'}} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                <span className="text-xs font-bold text-white">Teclado & Piano</span>
-              </div>
             </div>
             <div className="rounded-2xl overflow-hidden border border-zinc-800 h-48 bg-zinc-900 relative group">
               <img src="/images/guitarra-banda.jpg" alt="Aula prática" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e)=>{(e.target as HTMLElement).style.display='none'}} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                <span className="text-xs font-bold text-white">Violão</span>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ================= CURSOS SECTION ================= */}
+      {/* ================= CURSOS SECTION COM ÍCONES PRONTOS ================= */}
       <section id="cursos" className="py-24 bg-zinc-900/50 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">Instrumentos & Cursos</h2>
-            <p className="text-zinc-400 text-lg">Encontre o instrumento perfeito para o seu estilo.</p>
+            <p className="text-zinc-400 text-lg">Conheça nossos cursos especializados para iniciantes, intermediários e avançados.</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {['Violão', 'Guitarra', 'Viola', 'Ukulele', 'Contrabaixo', 'Canto', 'Piano', 'Violino', 'Flauta', 'Gaita', 'Sax', 'Iniciação musical'].map((curso, idx) => (
-              <div key={idx} className="group bg-zinc-900 border border-zinc-800 p-6 rounded-2xl flex flex-col items-center justify-center text-center hover:bg-zinc-800 hover:border-amber-500/50 transition-all cursor-default shadow-sm">
-                {curso === 'Canto' ? <Mic2 className="w-10 h-10 text-amber-400 mb-4 group-hover:scale-110 transition-transform" /> : 
-                 curso === 'Piano' ? <Piano className="w-10 h-10 text-amber-400 mb-4 group-hover:scale-110 transition-transform" /> :
-                 curso === 'Iniciação musical' ? <Play className="w-10 h-10 text-amber-400 mb-4 group-hover:scale-110 transition-transform" /> :
-                 <Guitar className="w-10 h-10 text-amber-400 mb-4 group-hover:scale-110 transition-transform" />}
-                <h3 className="font-semibold text-lg text-zinc-200 group-hover:text-white">{curso}</h3>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cursosData.map((curso, idx) => {
+              const IconComponent = curso.icon;
+              return (
+                <div key={idx} className="group bg-zinc-900 border border-zinc-800 p-8 rounded-3xl flex flex-col justify-between hover:bg-zinc-850 hover:border-amber-500/50 transition-all shadow-sm">
+                  <div>
+                    <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-6 group-hover:scale-110 transition-transform">
+                      {/* O tamanho do ícone sendo aplicado para as bibliotecas */}
+                      <IconComponent className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3">{curso.name}</h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-6">{curso.desc}</p>
+                  </div>
+                  <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs font-semibold text-amber-400 uppercase tracking-wider">
+                    <span>Aulas Semanais de 60 min</span>
+                    <span className="text-emerald-400">Presencial / Online</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -362,15 +416,15 @@ export default function Home() {
               </div>
               <div className="space-y-3 flex flex-col items-center md:items-start text-zinc-300">
                 <a href="https://instagram.com/guitarkidsbrasil.saopaulo" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-pink-400 transition-colors">
-                  <Instagram className="w-5 h-5 text-pink-500" aria-hidden="true" />
+                  <Instagram className="w-5 h-5 text-pink-500" />
                   @guitarkidsbrasil.saopaulo
                 </a>
                 <a href="https://instagram.com/guitarbrasil.saopaulo" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-pink-400 transition-colors">
-                  <Instagram className="w-5 h-5 text-pink-500" aria-hidden="true" />
+                  <Instagram className="w-5 h-5 text-pink-500" />
                   @guitarbrasil.saopaulo
                 </a>
                 <a href="https://instagram.com/guitarkids.brasil" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-pink-400 transition-colors">
-                  <Instagram className="w-5 h-5 text-pink-500" aria-hidden="true" />
+                  <Instagram className="w-5 h-5 text-pink-500" />
                   @guitarkids.brasil
                 </a>
               </div>
