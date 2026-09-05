@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-amber-500 selection:text-zinc-950">
       
-      {/* ================= HEADER (Sticky) ================= */}
+      {/* ================ HEADER (Sticky) ================ */}
       <header className="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
